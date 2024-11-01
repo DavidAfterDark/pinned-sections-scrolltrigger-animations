@@ -1,0 +1,31 @@
+---
+import { parse } from "node-html-parser"
+
+export interface Props {
+    name: string // Propiedad que recibe el nombre del SVG
+    class?: string // Propiedad opcional para clases CSS
+    width?: string
+    height?: string
+}
+
+const { name, class: className, width, height } = Astro.props
+
+// Cargar el SVG como texto
+const { default: svgContent } = await import(`../svg/${name}.svg?raw`)
+
+const root = parse(svgContent)
+
+const svgElement = root.querySelector("svg")
+
+// Extraer atributos y contenido del SVG
+const _svgAttributes = {
+    ...svgElement?.attributes,
+    class: className,
+    width: width ? width : svgElement?.attributes.width,
+    height: height ? height : svgElement?.attributes.height,
+}
+const _innerHTML = svgElement?.innerHTML
+---
+
+<!-- Renderizar el SVG -->
+<svg {..._svgAttributes} set:html={_innerHTML} />
