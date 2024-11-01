@@ -1,0 +1,29 @@
+---
+import IconSvg from "@components/IconSvg.astro"
+
+interface Props {
+    iconName: "bulb" | "puzzle" | "rocket" | "trending-up"
+    date: string
+    title: string
+    class?: string
+}
+
+const { iconName, date, title, class: className } = Astro.props as Props
+---
+
+<div class=`pinned-index ${className}`>
+    <IconSvg name={iconName} />
+    <p class="pinned-index__date">{date}</p>
+    <p class="pinned-index__title">{title}</p>
+</div>
+
+<style lang="css">
+    .pinned-index {
+    }
+
+    .pinned-index__date {
+    }
+
+    .pinned-index__title {
+    }
+</style>
