@@ -1,11 +1,11 @@
 ---
 interface Props {
-	title: string;
+	title: string
 }
 
-const { title } = Astro.props;
+const { title } = Astro.props as Props
 
-import '@/css/normalize.module.css'
+import "@css/normalize.module.css"
 ---
 
 <!doctype html>
@@ -22,6 +22,7 @@ import '@/css/normalize.module.css'
 		<slot />
 	</body>
 </html>
+
 <style is:global>
 	:root {
 		--accent: 136, 58, 234;
@@ -34,19 +35,29 @@ import '@/css/normalize.module.css'
 			white 60%
 		);
 	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
+
+	html,
+	body {
+		width: 100%;
+		height: 600vh;
 		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+			"Absolut Headline",
+			Arial Condensed Bold,
+			Arial Narrow Bold,
+			sans-serif;
+		color: #fff;
+		background: #13151a;
+		::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	@font-face {
+		font-family: "Absolut Headline";
+		src: url("/fonts/Absolut\ Headline/absolut-headline.woff")
+			format("woff");
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
 	}
 </style>
