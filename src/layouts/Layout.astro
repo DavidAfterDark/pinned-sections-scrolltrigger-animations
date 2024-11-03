@@ -6,6 +6,7 @@ interface Props {
 const { title } = Astro.props as Props
 
 import "@css/normalize.module.css"
+import 'lenis/dist/lenis.css'
 ---
 
 <!doctype html>
@@ -54,10 +55,25 @@ import "@css/normalize.module.css"
 
 	@font-face {
 		font-family: "Absolut Headline";
-		src: url("fonts/Absolut\ Headline/absolut-headline.woff")
-			format("woff");
+		src: url("fonts/Absolut\ Headline/absolut-headline.woff") format("woff");
 		font-weight: normal;
 		font-style: normal;
 		font-display: swap;
+	}
+
+	.lenis.lenis-smooth {
+		scroll-behavior: auto !important;
+	}
+
+	.lenis.lenis-smooth [data-lenis-prevent] {
+		overscroll-behavior: contain;
+	}
+
+	.lenis.lenis-stopped {
+		overflow: hidden;
+	}
+
+	.lenis.lenis-smooth iframe {
+		pointer-events: none;
 	}
 </style>
