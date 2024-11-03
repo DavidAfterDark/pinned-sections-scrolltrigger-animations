@@ -1,61 +1,118 @@
 ---
 interface Props {
-	title: string;
-	body: string;
-	href: string;
+	class?: string
+	phase: string
+	title: string
+	body: string
 }
 
-const { href, title, body } = Astro.props;
+const { title, body, phase, class: className } = Astro.props
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
-<style>
-	.link-card {
-		list-style: none;
+<article class=`card ${className}`>
+	<div class="card__phase">
+		<p>{phase}</p>
+	</div>
+
+	<div class="card__tilte">
+		<p>{body}</p>
+		<h1 set:html={title}></h1>
+	</div>
+</article>
+
+<style is:global>
+	.card {
+		position: absolute;
+		top: 150%;
+		left: 50%;
+		transform: translateX(-50%) translateY(-50%) rotate(0deg);
+		width: 40%;
+		height: 50%;
 		display: flex;
-		padding: 1px;
-		background-color: #23262d;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 7px;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-	}
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
-		border-radius: 8px;
-		color: white;
-		background-color: #23262d;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
+		justify-content: center;
+		align-items: center;
+		background-color: #000;
+		border-radius: 1em;
+		will-change: transform;
+		overflow: hidden;
+
+		.card__phase {
+			position: absolute;
+			top: 1.2em;
+			left: 50%;
+			transform: translateX(-50%);
+			padding: 0.125em 1.25em;
+			border-radius: 0.25em;
+			color: #000;
+
+			p {
+				font-size: 24px;
+			}
+		}
+
+		.card__tilte {
+			p {
+				text-align: center;
+			}
+
+			h1 {
+				font-size: 80px;
+				font-weight: lighter;
+				line-height: 90%;
+
+				span {
+					color: transparent;
+					-webkit-text-stroke: 1.25px #fff;
+				}
+			}
+		}
+
+		&.card-1 {
+			border: 2px solid rgba(236, 183, 76, 0.35);
+
+			.card__phase {
+				background-color: #ecb74c;
+			}
+
+			.card__tilte {
+				color: #ecb74c;
+			}
+		}
+
+		&.card-2 {
+			border: 2px solid rgba(125, 216, 205, 0.35);
+
+			.card__phase {
+				background-color: #7dd8cd;
+			}
+
+			.card__tilte {
+				color: #7dd8cd;
+			}
+		}
+
+		&.card-3 {
+			border: 2px solid rgba(224, 255, 87, 0.35);
+
+			.card__phase {
+				background-color: #e0ff57;
+			}
+
+			.card__tilte {
+				color: #e0ff57;
+			}
+		}
+
+		&.card-4 {
+			border: 2px solid rgba(125, 216, 205, 0.35);
+
+			.card__phase {
+				background-color: #7dd8cd;
+			}
+
+			.card__tilte {
+				color: #7dd8cd;
+			}
+		}
 	}
 </style>
