@@ -210,7 +210,11 @@ import Card from "@components/Card.astro"
         onUpdate: (self) => {
             const progress = self.progress * (cardCount + 1)
 
+            console.log(progress)
+            
             const currentCard = Math.floor(progress)
+
+            console.log({currentCard})
 
             if (progress <= 1) {
                 gsap.to($stickyHeader, {
@@ -237,8 +241,6 @@ import Card from "@components/Card.astro"
                 progressHeight = ((progress - 1) / cardCount) * 100
                 colorIndex = Math.min(Math.floor(progress - 1), cardCount - 1)
             }
-
-            console.log(progressHeight)
 
             gsap.to($progressBar, {
                 height: `${progressHeight}%`,
