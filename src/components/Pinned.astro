@@ -1,0 +1,113 @@
+---
+import ProgressBar from "@components/ProgressBar.astro"
+import PinnedIndex from "@components/PinnedIndex.astro"
+import Card from "@components/Card.astro"
+---
+
+<section class="pinned">
+    <div class="pinned__content">
+        <div class="pinned__content__sticky-header">
+            <h2>Roadmap</h2>
+        </div>
+
+        <ProgressBar />
+
+        <div class="pinned__indices">
+            <PinnedIndex
+                iconName="bulb"
+                date="May 15th"
+                title="Beta Launch"
+                class="index-1"
+            />
+
+            <PinnedIndex
+                iconName="rocket"
+                date="Juli 1st"
+                title="Public Release"
+                class="index-2"
+            />
+
+            <PinnedIndex
+                iconName="puzzle"
+                date="August 2th"
+                title="Public Release"
+                class="index-3"
+            />
+
+            <PinnedIndex
+                iconName="trending-up"
+                date="October 5th"
+                title="Public Release"
+                class="index-4"
+            />
+        </div>
+
+        <div class="cards">
+            <Card
+                phase="Phase #01"
+                body="From May 15th"
+                title="Beta <span>Launch</span>"
+                class="card-1"
+            />
+
+            <Card
+                phase="Phase #02"
+                body="From Juli 1st"
+                title="Public <span>Release</span>"
+                class="card-2"
+            />
+
+            <Card
+                phase="Phase #03"
+                body="From August 20th"
+                title="API <span>Integration</span>"
+                class="card-3"
+            />
+
+            <Card
+                phase="Phase #04"
+                body="From October 5th"
+                title="Pro <span>Features</span>"
+                class="card-4"
+            />
+        </div>
+    </div>
+</section>
+
+<style>
+    .pinned {
+    }
+
+    .pinned__content {
+    }
+
+    .pinned__content__sticky-header {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 1;
+
+        h2 {
+            font-size: 20vw;
+            font-weight: lighter;
+            color: transparent;
+            -webkit-text-stroke: 2px #fff;
+        }
+    }
+
+    .pinned__indices {
+        position: absolute;
+        top: 0;
+        right: 24px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 4em;
+        opacity: 0;
+    }
+
+    .index-1 {
+    }
+</style>
