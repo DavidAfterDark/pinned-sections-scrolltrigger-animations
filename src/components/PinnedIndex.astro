@@ -12,18 +12,51 @@ const { iconName, date, title, class: className } = Astro.props as Props
 ---
 
 <div class=`pinned-index ${className}`>
-    <IconSvg name={iconName} />
+    <div class="pinned-index__svg">
+        <IconSvg name={iconName} />
+    </div>
     <p class="pinned-index__date">{date}</p>
     <p class="pinned-index__title">{title}</p>
 </div>
 
-<style lang="css">
+<style>
     .pinned-index {
+        text-align: right;
+        opacity: 0.25;
+
+        .pinned-index__svg {
+            width: fit-content;
+            margin-left: auto;
+        }
+
+        .pinned-index__date, .pinned-index__title {
+            text-decoration: line-through;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+        }
+    
+        .pinned-index__date {
+        }
+    
+        .pinned-index__title {
+            font-size: 1.125rem;
+        }
+
+        &.index-1 {
+            color: #ecb74c;
+        }
+
+        &.index-2 {
+            color: #7dd8cd;
+        }
+
+        &.index-3 {
+            color: #e0ff57;
+        }
+
+        &.index-4 {
+            color: #7dd8cd;
+        }
     }
 
-    .pinned-index__date {
-    }
-
-    .pinned-index__title {
-    }
 </style>
